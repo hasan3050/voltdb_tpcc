@@ -64,6 +64,8 @@ doc/tutorials/*/*.jar
 /src/frontend/org/voltcore/utils/.flagfile
 /tests/sqlcmd/scripts/**/*.outdiffs
 out
+*cdf.txt
+*xxx.txt
 bundles
 *.lcbak
 .gradle/*

@@ -52,7 +52,8 @@ function jars-ifneeded() {
 function server() {
     # note: "init --force" will delete any existing data
     voltdb init --force
-    voltdb start -H $STARTUPLEADERHOST
+#    voltdb start -H $STARTUPLEADERHOST
+    voltdb start -B -H $STARTUPLEADERHOST
 }
 
 # load schema and procedures
@@ -62,11 +63,14 @@ function init() {
 }
 
 # run the client that drives the example
+#        --duration=180 \
 function client() {
+    echo $APPCLASSPATH
     jars-ifneeded
     java -classpath $APPNAME-client.jar:$APPNAME-procs.jar:$APPCLASSPATH com.MyTPCC \
         --servers=localhost \
-        --duration=180 \
+        --transactions=5800000 \
+	--ratelimit=200000000 \
         --warehouses=256 \
         --scalefactor=22
 }
