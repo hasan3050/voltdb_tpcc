@@ -1,5 +1,5 @@
 #!/bin/bash
-voltdb_path="./voltdb/tests/test_apps/tpcc/"
+voltdb_path="./tests/test_apps/tpcc/"
 
 ps -aux | grep voltdb | grep -v grep | awk '{ print $2 }' | xargs kill -9
 sudo bash -c "echo never > /sys/kernel/mm/transparent_hugepage/enabled";
