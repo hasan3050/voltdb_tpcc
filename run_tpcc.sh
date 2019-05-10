@@ -1,12 +1,12 @@
 #!/bin/bash
-voltdb_path="/proj/gaia-PG0/hasan/voltdb/tests/test_apps/tpcc/"
+voltdb_path="./voltdb/tests/test_apps/tpcc/"
 
 ps -aux | grep voltdb | grep -v grep | awk '{ print $2 }' | xargs kill -9
 sudo bash -c "echo never > /sys/kernel/mm/transparent_hugepage/enabled";
 sudo bash -c "echo never > /sys/kernel/mm/transparent_hugepage/defrag";
 
 cd $voltdb_path
-#./run.sh clean &&
+./run.sh clean &&
 ./run.sh jars &&
 ./run.sh server &&
 /bin/sleep 10 &&
